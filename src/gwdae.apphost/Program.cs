@@ -2,9 +2,9 @@ using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var grpcService = builder.AddProject<gwdae_grpcservice>("grpcservice");
+var grpcService = builder.AddProject<gwdae.grpcservice>("grpcservice");
 
-builder.AddProject<gwdae_web>("webui")
+builder.AddProject<gwdae.web>("webui")
     .WithReference(grpcService);
 
 
