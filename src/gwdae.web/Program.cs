@@ -1,6 +1,16 @@
 using gwdae.web.Components;
+using gwdae.web.Services;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using gwdae.grpcservice;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
+builder.Services.AddHttpForwarderWithServiceDiscovery();
+
+builder.Services.AddSingleton<DataSourceServiceClient>()
+    .AddGrpcServiceReference<DataSource.DataSourceClient>("http://grpcservice", failureStatus: HealthStatus.Degraded);
+
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

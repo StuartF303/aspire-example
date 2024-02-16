@@ -8,11 +8,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+		<Protobuf Include="Protos\data.proto" GrpcServices="Server" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Grpc.AspNetCore" Version="2.60.0" />
+		<PackageReference Include="Grpc.AspNetCore.HealthChecks" Version="2.60.0" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "gwdae.grpcservice";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package data;
+
+// The greeting service definition.
+service DataSource {
+  // Sends a greeting
+  rpc GetData (DataRequest) returns (DataReply);
+}
+
+// The request message containing the user's name.
+message DataRequest {
+  string start = 1;
+  string last = 2;
+  string Name = 3;
+}
+
+// The response message containing the greetings.
+message DataReply {
+  string message = 1;
+}

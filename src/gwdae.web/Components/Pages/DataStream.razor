@@ -1,0 +1,25 @@
+﻿@page "/datastream"
+@rendermode InteractiveServer
+@inject DataSourceServiceClient dataClient
+@using gwdae.grpcservice
+
+<PageTitle>Data Streamer</PageTitle>
+
+<h3>Data Stream</h3>
+
+<p>
+    @if (reply != null)
+    {
+        @reply.Message
+    }
+</p>
+
+
+@code {
+    DataReply? reply;
+
+    protected override async Task OnInitializedAsync()
+    {
+        reply = await dataClient.GetDataSourceEntry();
+    }
+}
